@@ -8,14 +8,14 @@ import (
 )
 
 type Transaction struct {
-	ID 							uint64 		`json:"trn_id"`
-	DatePerformed 	time.Time `json:"trn_date_perfomed"`
-	Type 						string 		`json:"trn_type"`
-	Amount 					float64 	`json:"trn_amount"`
-	AccountId 			uuid.UUID `json:"trn_account_id"`
-	CreatedAt 			time.Time `json:"ctr_created_at"`
-	UpdatedAt 			time.Time `json:"ctr_updated_at"`
-	DeletedAt 			time.Time `json:"ctr_deleted_at"`
+	ID 							uint64 			`json:"trn_id"`
+	DatePerformed 	time.Time 	`json:"trn_date_perfomed"`
+	Type 						string 			`json:"trn_type"`
+	Amount 					float64 		`json:"trn_amount"`
+	AccountId 			uuid.UUID 	`json:"trn_account_id"`
+	CreatedAt 			time.Time 	`json:"ctr_created_at"`
+	UpdatedAt 			time.Time 	`json:"ctr_updated_at"`
+	DeletedAt 			*time.Time 	`json:"ctr_deleted_at"`
 }
 
 type TransactionList struct {

@@ -5,7 +5,7 @@ import (
 )
 func (db Database) GetTransactionsByAccountId(accId string) (*models.TransactionList, error) {
     list := &models.TransactionList{}
-		query := `SELECT * FROM transaction_acc WHERE trn_account_id = $1 ORDER BY ID DESC`
+		query := `SELECT * FROM transaction_acc WHERE trn_account_id = $1 ORDER BY trn_date_perfomed DESC`
     rows, err := db.Conn.Query(query, accId)
     if err != nil {
         return list, err

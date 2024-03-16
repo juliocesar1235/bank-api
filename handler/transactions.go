@@ -3,10 +3,12 @@ import (
     "context"
     "fmt"
     "net/http"
-    "github.com/go-chi/chi"
+    "github.com/go-chi/chi/v5"
     "github.com/go-chi/render"
+		"github.com/juliocesar1235/bank-api/services"
 )
 var accIDKey = "accountID"
+var trnService services.TransactionService
 func transactions(router chi.Router) {
 		router.Route("/{accountId}", func(router chi.Router){
 			router.Use(TransactionContext)
@@ -29,12 +31,12 @@ func TransactionContext(next http.Handler) http.Handler {
 
 func getTransactionsByAccId(w http.ResponseWriter, r *http.Request) {
 	accountId := r.Context().Value(accIDKey).(string)
-	items, err := dbInstance.GetTransactionsByAccountId(accountId)
+	transactions, err := trnService.GetTransactionsByAccountId(accountId, dbInstance)
 	if err != nil {
 			render.Render(w, r, ServerErrorRenderer(err))
 			return
 	}
-	if err := render.Render(w, r, items); err != nil {
+	if err := render.Render(w, r, transactions); err != nil {
 			render.Render(w, r, ErrorRenderer(err))
 	}
 	

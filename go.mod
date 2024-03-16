@@ -6,6 +6,7 @@ require github.com/aws/aws-sdk-go v1.50.37
 
 require (
 	github.com/ajg/form v1.5.1 // indirect
+	github.com/aws/aws-lambda-go v1.46.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-chi/chi v1.5.5 // indirect
 	github.com/go-chi/render v1.0.3 // indirect

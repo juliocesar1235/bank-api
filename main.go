@@ -44,6 +44,7 @@ func main() {
     log.Println(fmt.Sprint(<-ch))
     log.Println("Stopping API server.")
 }
+
 func Stop(server *http.Server) {
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
